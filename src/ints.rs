@@ -228,6 +228,28 @@ macro_rules! bounded_ints {
                 }
             }
 
+            impl<const MIN: $num_type, const MAX: $num_type> PartialOrd<$num_type> for $wrapped_name<MIN, MAX> {
+                fn partial_cmp(&self, other: &$num_type) -> Option<::core::cmp::Ordering> {
+                    self.inner.partial_cmp(other)
+                }
+
+                fn lt(&self, other: &$num_type) -> bool {
+                    self.inner.lt(other)
+                }
+
+                fn le(&self, other: &$num_type) -> bool {
+                    self.inner.le(other)
+                }
+
+                fn gt(&self, other: &$num_type) -> bool {
+                    self.inner.gt(other)
+                }
+
+                fn ge(&self, other: &$num_type) -> bool {
+                    self.inner.ge(other)
+                }
+            }
+
             impl<const MIN: $num_type, const MAX: $num_type> Into<$num_type>
                 for $wrapped_name<MIN, MAX>
             {
