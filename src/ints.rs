@@ -196,6 +196,7 @@ macro_rules! bounded_ints {
             impl<const MIN: $num_type, const MAX: $num_type> ::core::fmt::Display
                 for $wrapped_name<MIN, MAX>
             {
+                /// Uses the formatter of the `inner_num_repr`.
                 fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                     self.inner.fmt(f)
                 }

@@ -4,7 +4,7 @@
 
 ![](https://badgers.space/badge/MSRV/Edition%202024/blue)
 
-This crate provides the all the boilerplate needed for the bounded values in your code.
+This crate provides the all the boilerplate needed for the bounded values in your code. It is `no-std` compatible too.
 
 Right now, only bounded number types are implemented. If you need anything else - feel free to write a GitHub issue or make a Pull Request.
 
