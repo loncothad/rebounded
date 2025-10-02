@@ -219,11 +219,11 @@ macro_rules! bounded_ints {
                 for $wrapped_name<MIN, MAX>
             {
                 fn eq(&self, other: &$num_type) -> bool {
-                    &self.inner == other
+                    self.inner.eq(other)
                 }
 
                 fn ne(&self, other: &$num_type) -> bool {
-                    &self.inner == other
+                    self.inner.ne(other)
                 }
             }
 
