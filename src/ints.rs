@@ -145,9 +145,8 @@ macro_rules! bounded_ints {
                 ///
                 /// ### Safety
                 ///
-                /// This results in undefined behavior when one of these cases occurs:
-                /// `self - rhs > $num_type::MAX`, `self - rhs > $num_type::MIN`, `self -
-                /// rhs > Self::MAX`, `self - rhs > Self::MIN`.
+                /// This results in undefined behavior if the result overflows the primitive
+                /// type's bounds or the `[MIN, MAX]` bounds of this type.
                 pub unsafe fn unchecked_sub<Rhs: Into<$num_type>>(self, rhs: Rhs) -> Self {
                     Self::pack(unsafe { self.inner.unchecked_sub(rhs.into()) })
                 }
@@ -163,9 +162,8 @@ macro_rules! bounded_ints {
                 ///
                 /// ### Safety
                 ///
-                /// This results in undefined behavior when one of these cases occurs:
-                /// `self * rhs > num_repr::MAX`, `self * rhs > num_repr::MIN`, `self * rhs
-                /// > Self::MAX`, `self * rhs > Self::MIN`.
+                /// This results in undefined behavior if the result overflows the primitive
+                /// type's bounds or the `[MIN, MAX]` bounds of this type.
                 pub unsafe fn unchecked_mul<Rhs: Into<$num_type>>(self, rhs: Rhs) -> Self {
                     Self::pack(unsafe { self.inner.unchecked_mul(rhs.into()) })
                 }
@@ -183,13 +181,13 @@ macro_rules! bounded_ints {
                 }
 
                 /// Checked negation. Computes `-self`, returning `None` if bound overflow
-                /// or `self == num_repr::MIN` occurred.
+                /// or `self == inner_num_repr::MIN` occurred.
                 pub fn checked_neg(self) -> Option<Self> {
                     Self::filter_map_opt(self.inner.checked_neg())
                 }
 
                 /// Checked integer exponentiation. Computes `self.pow()`, returning `None`
-                /// if bound overflow or `self == num_repr::MIN` occurred.
+                /// if bound overflow or `self == inner_num_repr::MIN` occurred.
                 pub fn checked_pow(self, exp: u32) -> Option<Self> {
                     Self::filter_map_opt(self.inner.checked_pow(exp))
                 }
