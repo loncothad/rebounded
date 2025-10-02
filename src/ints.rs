@@ -377,4 +377,4 @@ impl_from_for_u16!(
     BoundedIsize
 );
 impl_from_for_i32!(BoundedInt64, BoundedIsize);
-impl_from_for_u32!(BoundedInt64, BoundedUsize);
+impl_from_for_u32!(BoundedUInt64, BoundedUsize, BoundedInt64);
