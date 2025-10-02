@@ -1,0 +1,10 @@
+[package]
+name        = "rebounded"
+description = "Bounded types"
+version     = "1.0.0"
+edition     = "2024"
+license     = "MIT or Apache-2.0"
+repository  = "https://github.com/loncothad/rebounded"
+authors     = [ "loncothad <me@loncothad.cc>" ]
+categories  = [ "data-structures", "no-std", "rust-patterns" ]
+keywords    = [ "bounded", "checked" ]
