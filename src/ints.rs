@@ -105,7 +105,7 @@ macro_rules! bounded_ints {
 
                 /// Check if abstract value is within bounds.
                 pub fn is_in_bounds(n: &$num_type) -> bool {
-                    n < &Self::MIN || n > &Self::MAX
+                    n >= &Self::MIN && n <= &Self::MAX
                 }
 
                 fn filter_map_opt(n: Option<$num_type>) -> Option<Self> {
